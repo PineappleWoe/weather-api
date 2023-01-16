@@ -1,0 +1,7 @@
+.search-list{
+    display: none;
+}
+
+.search input:focus ~ div .search-list, .search-list:active{
+    display: block;
+}

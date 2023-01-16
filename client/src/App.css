@@ -1,0 +1,26 @@
+.app {
+    
+    background-size: 200% 200%;
+    animation-name: background-flow;
+    animation-duration: 60s;
+    animation-timing-function: ease;
+    animation-iteration-count: infinite;
+}
+
+@keyframes background-flow {
+    0% {
+        background-position: 50% 25%;
+    }
+    25% {
+        background-position: 50% 50%;
+    }
+    50% {
+        background-position: 50% 100%
+    }
+    75%{
+        background-position: 50% 50%;
+    }
+    100% {
+        background-position: 50% 25%;
+    }
+}
