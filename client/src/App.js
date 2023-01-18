@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 // Stylesheet
 import './App.css';
@@ -24,14 +24,14 @@ function App() {
     getLocation(query)
       .then(response => setLocations(response.data))
       .catch(err => console.log(err));
-  }, [query])
+  }, [query]);
 
   return (
     <div className="app flex justify-center items-center min-h-screen bg-gradient-to-br from-orange-200 via-sky-200  to-violet-400 backdrop-blur-3xl">
       <WeatherContext.Provider value={{ weather, setWeather }} >
         <ForecastContext.Provider value={{ forecast, setForecast }} >
           <UnitContext.Provider value={{ unit, setUnit }}>
-            <Weather weather={weather} forecast={forecast} query={query} setQuery={setQuery} locations={locations} />
+            <Weather query={query} setQuery={setQuery} locations={locations} />
           </UnitContext.Provider>
         </ForecastContext.Provider>
       </WeatherContext.Provider>

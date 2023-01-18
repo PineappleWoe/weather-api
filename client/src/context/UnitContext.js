@@ -1,6 +1,6 @@
-import { createContext } from "react";
+import { createContext } from 'react';
 
 export const UnitContext = createContext({
-    unit: 'celsius',
-    setUnit: () => {}
+  unit: 'celsius',
+  setUnit: () => {}
 });
