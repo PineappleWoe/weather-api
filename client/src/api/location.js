@@ -1,12 +1,16 @@
 import axios from 'axios';
 
-const baseURL = 'http://api.positionstack.com/v1/forward';
-const API_KEY = `?access_key=${process.env.REACT_APP_LOCATION_KEY}`;
-
 const getLocation = async (query) => {
-  const request = axios.get(`${baseURL}${API_KEY}&query=${query}`);
+  const request = await axios.get('/api/location', {
+    params: {
+      query: query
+    }
+  })
+    .then((response) => response.data);
+
+  console.log(request);
   
-  return request.then(response => response.data);
+  return request;
 };
 
 export default getLocation;

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-export const useError = (initialError = null) => {
+const useError = (initialError = null) => {
   const [error, setError] = useState(initialError);
 
   const showError = (message) => {
@@ -18,5 +18,7 @@ export const useError = (initialError = null) => {
     return () => clearTimeout(errorTimeout);
   }, [error]);
 
-  return [error, showError, clearError];
+  return {error, showError, clearError};
 };
+
+export default useError;

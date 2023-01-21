@@ -4,7 +4,7 @@ import React, { useContext } from 'react';
 import { Wind, Droplet } from 'react-bootstrap-icons';
 
 // Context
-import { UnitContext } from '../../context/UnitContext';
+import { UnitContext } from '../../context/WeatherContext';
 
 const WeatherCard = ({ weather }) => {
 

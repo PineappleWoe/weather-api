@@ -1,16 +1,18 @@
 import { useState, useEffect } from 'react';
 
 // Context
-import { getLocation } from '../../api/location.js';
+import getLocation from '../api/location';
 
-export const useLocation = (query) => {
-  const [locations, setLocations] = useState([]);
+const useLocation = (query = 'London') => {
+  const [location, setLocation] = useState([]);
 
   useEffect(() => {
     getLocation(query)
-      .then(response => setLocations(response.data))
+      .then(response => setLocation(response.data))
       .catch(err => console.log(err));
   }, [query]);
 
-  return locations;
+  return location;
 };
+
+export default useLocation;

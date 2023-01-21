@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-export default function useTime() {
+const useTime = () => {
   const [time, setTime] = useState(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true }));
   const date = new Date().toLocaleDateString('en-gb', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 
@@ -10,8 +10,10 @@ export default function useTime() {
       setTime(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true }));
     }, 60000);
 
-    return clearInterval(updateTime);
+    return updateTime;
   });
 
   return {time, date};
-}
+};
+
+export default useTime;

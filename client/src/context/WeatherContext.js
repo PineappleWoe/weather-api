@@ -1,3 +1,10 @@
 import { createContext } from 'react';
 
-export const WeatherContext = createContext([]);
+const WeatherContext = createContext([]);
+const ForecastContext = createContext([]);
+const UnitContext = createContext({
+  unit: 'celsius',
+  setUnit: () => {}
+});
+
+export { WeatherContext, ForecastContext, UnitContext };

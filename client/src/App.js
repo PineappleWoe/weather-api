@@ -1,41 +1,32 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 // Stylesheet
 import './App.css';
-import Weather from './pages/Weather';
 
-// Services
-import getLocation from './api/location';
+// Components
+import Nav from './components/Nav/Nav';
+import Weather from './pages/Weather';
+import Footer from './components/Footer/Footer';
 
 // Context
-import { WeatherContext } from './context/WeatherContext';
-import { UnitContext } from './context/UnitContext';
-import { ForecastContext } from './context/ForecastContext';
-
+import { WeatherContext, ForecastContext, UnitContext } from './context/WeatherContext';
 function App() {
 
   const [weather, setWeather] = useState([]);
   const [forecast, setForecast] = useState([]);
   const [unit, setUnit] = useState('celsius');
-  const [locations, setLocations] = useState([]);
-  const [query, setQuery] = useState('');
-
-  useEffect(() => {
-    getLocation(query)
-      .then(response => setLocations(response.data))
-      .catch(err => console.log(err));
-  }, [query]);
 
   return (
-    <div className="app flex justify-center items-center min-h-screen bg-gradient-to-br from-orange-200 via-sky-200  to-violet-400 backdrop-blur-3xl">
+    <div className="app flex flex-col justify-between items-center min-h-screen bg-gradient-to-br from-orange-200 via-sky-200  to-violet-400 backdrop-blur-3xl">
+      <Nav />
       <WeatherContext.Provider value={{ weather, setWeather }} >
         <ForecastContext.Provider value={{ forecast, setForecast }} >
           <UnitContext.Provider value={{ unit, setUnit }}>
-            <Weather query={query} setQuery={setQuery} locations={locations} />
+            <Weather />
           </UnitContext.Provider>
         </ForecastContext.Provider>
       </WeatherContext.Provider>
-      {console.log(forecast)}
+      <Footer />
     </div>
   );
 }

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 // Context
-import { UnitContext } from '../../context/UnitContext';
+import { UnitContext } from '../../context/WeatherContext';
 
 const UnitControl = () => {
   const { unit, setUnit } = useContext(UnitContext);
