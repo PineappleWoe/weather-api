@@ -18,7 +18,7 @@ const Results = ({ results, fetchWeather }) => {
   if (results.length <= 10 && results.length > 0) {
     return (
       <div className='absolute top-12 w-full z-10'>
-        <ul className='search-list max-h-64 p-2 bg-white rounded-md shadow-md overflow-y-scroll'>
+        <ul className='search-list max-h-64 p-2 bg-white rounded-md shadow-md overflow-y-auto'>
           <h3 className='text-center font-bold mb-4'>Please Select from the list below</h3>
           {results.map(result =>
             <li key={result.latitude + result.longitude + new Date()} className='active:scale-95 hover:bg-slate-200 border-b'>
