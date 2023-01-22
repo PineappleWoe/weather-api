@@ -15,9 +15,13 @@ app.use(express.static('build'));
 
 // Routers
 const locationRouter = require('./routes/locationRoutes');
+const weatherRouter = require('./routes/weatherRoutes');
+const forecastRouter = require('./routes/forecastRoutes');
 
 // Routes
 app.use('/api/location', locationRouter);
+app.use('/api/weather', weatherRouter);
+app.use('/api/forecast', forecastRouter);
 
 // Listen
 const PORT = process.env.PORT || 3001;

@@ -1,20 +1,34 @@
 import axios from 'axios';
 
 const getWeather = async (lat, lon) => {
-  const baseURL = 'https://api.openweathermap.org/data/2.5/weather';
-  const API_KEY = `&appid=${process.env.REACT_APP_WEATHER_KEY}`;
+  try {
+    const request = await axios.get('/api/weather', {
+      params: {
+        lat, lon
+      }
+    });
 
-  const request = axios.get(`${baseURL}?lat=${lat}&lon=${lon}${API_KEY}`);
-  return request.then(response => response.data);
+    return request.data;
+  } catch (error) {
+    throw Error(error);
+  }
 };
 
 
 const getForecast = async (lat, lon) => {
-  const baseURL = 'https://api.openweathermap.org/data/2.5/forecast';
-  const API_KEY = `&appid=${process.env.REACT_APP_WEATHER_KEY}`;
+  try {
+    const request = await axios.get('/api/forecast', {
+      params: {
+        lat, lon
+      }
+    });
 
-  const request = axios.get(`${baseURL}?lat=${lat}&lon=${lon}${API_KEY}`);
-  return request.then(response => response.data.list.filter(item => item.dt_txt.includes('12:00:00')));
+    console.log(request.data);
+
+    return request.data.list.filter(item => item.dt_txt.includes('12:00:00'));
+  } catch (error) {
+    throw Error(error);
+  }
 };
 
 export {getWeather, getForecast};
