@@ -27,5 +27,5 @@ app.use('/api/forecast', forecastRouter);
 const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {
-    console.log('Server listening to PORT: ', PORT);
+    console.log(`Server listening to PORT: ${PORT}`);
 })
