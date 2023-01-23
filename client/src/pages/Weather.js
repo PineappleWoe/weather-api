@@ -49,7 +49,7 @@ const Weather = () => {
             <div>
               <p className="font-bold text-2xl text-blue-600 mb-4">Forecast:</p>
               <Slider RenderedComponent={ForecastCard} items={forecast} />
-              <p className="italic opacity-50"><small>Provided data for forecasted weather is based on estimates for 12:00PM on selected days.</small></p>
+              <p className="italic opacity-50"><small>Provided data for forecasted weather is based on estimates for 12:00PM on presented dates.</small></p>
             </div>
                 }
               </div>

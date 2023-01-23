@@ -20,7 +20,7 @@ const ForecastCard = ({ forecast }) => {
   };
 
   return (
-    <div className="p-2 px-4 mx-auto text-center text-white bg-gradient-to-r from-red-500 to-rose-700 rounded-xl shadow-lg">
+    <div className="p-2 xl:px-6 px-4 mx-auto text-center text-white bg-gradient-to-r from-red-500 to-rose-700 rounded-xl shadow-lg">
       <div className="flex flex-col justify-center items-center py-2">
         <p>{forecastDate}</p>
         <img src={`http://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`} alt="Weather Icon" />
@@ -31,15 +31,13 @@ const ForecastCard = ({ forecast }) => {
       </div>
       <div className="max-w-xs mx-auto">
         <h3 className="text-center text-xl mb-2">{forecast.weather[0].main} </h3>
-        <div className="mb-2 text-center">
-          <p className="flex items-center">
-            <Wind className="mx-2" />
-            {forecast.wind.speed}<em>m/s</em>
-          </p>
-          <p className="flex items-center">
-            <Droplet className="mx-2" />
-            {forecast.main.humidity}<em>%</em>
-          </p>
+        <div className="flex items-center mb-2 text-center">
+          <p className="flex-1 flex items-center border-r"><Wind className="mx-2" /></p>
+          <p className="flex-1 text-right">{forecast.wind.speed.toFixed(0)}<em>m/s</em></p>
+        </div>
+        <div className="flex items-center mb-2 text-center">
+          <p className="flex-1 flex items-center border-r"><Droplet className="mx-2" /></p>
+          <p className="flex-1 text-right">{forecast.main.humidity}<em>%</em></p>
         </div>
       </div>
     </div>
