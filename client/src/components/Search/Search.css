@@ -2,6 +2,6 @@
     display: none;
 }
 
-.search input:focus ~ div .search-list, .search button:focus ~ div .search-list, .search-list:active{
+.search:focus-within .search-list, .search .search-btn:hover ~ div > .search-list{
     display: block;
 }
