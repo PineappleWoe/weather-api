@@ -2,14 +2,12 @@ import React, { useRef } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-// Bootstrap Icons
-import { List } from 'react-bootstrap-icons';
-
 // Stylesheet
 import './Nav.css';
 
 // Hooks
 import useOnClickOutside from '../../hooks/useOnClickOutside';
+import HamburgerMenu from './HamburgerMenu';
 
 const Nav = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,7 +32,7 @@ const Nav = () => {
             <Link to="/about" onClick={closeNav} className="nav-link block w-full">About</Link>
           </li>
         </ul>
-        <button className={`responsive-menu fixed top-2 right-2 md:hidden text-4xl ${isOpen ? 'close-btn' : ''}`} onClick={() => setIsOpen(!isOpen)}><List /></button>
+        <HamburgerMenu isOpen={isOpen} setIsOpen={setIsOpen} />
       </div>
     </nav>
   );
