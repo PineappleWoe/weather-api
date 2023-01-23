@@ -23,8 +23,6 @@ const getForecast = async (lat, lon) => {
       }
     });
 
-    console.log(request.data);
-
     return request.data.list.filter(item => item.dt_txt.includes('12:00:00'));
   } catch (error) {
     throw Error(error);
