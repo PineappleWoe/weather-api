@@ -4,6 +4,7 @@ require('dotenv').config();
 // Packages
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 
 // Set Express.js App
 const app = express();
@@ -22,6 +23,9 @@ const forecastRouter = require('./routes/forecastRoutes');
 app.use('/api/location', locationRouter);
 app.use('/api/weather', weatherRouter);
 app.use('/api/forecast', forecastRouter);
+
+// Catch all other routes with ReactJS App
+app.use('*', express.static(path.join(__dirname, 'build')));
 
 // Listen
 const PORT = process.env.PORT || 3001;

@@ -3,6 +3,9 @@
 
 # production
 /build
+fly.toml
+Dockerfile
 
 # misc
 .env
+.dockerignore
