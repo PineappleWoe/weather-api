@@ -9,7 +9,8 @@
 }
 
 .nav-list{
-    transition: right .5s cubic-bezier(.79,.14,.15,.86);
+    box-shadow: -20rem 0 0 calc(100vw + 20rem) rgba(0, 0, 0, 0);
+    transition: right .5s cubic-bezier(.79,.14,.15,.86), box-shadow .25s ease;
 }
 
 .nav-list.show{
@@ -43,5 +44,8 @@
 @media (max-width: 768px) {
     .nav-bar::after{
         display: none;
+    }
+    .nav-list.show{
+        box-shadow: -20rem 0 0 calc(100vw + 20rem) rgba(0, 0, 0, 0.5);
     }
 }
