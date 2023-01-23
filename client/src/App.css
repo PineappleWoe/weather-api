@@ -3,7 +3,7 @@
     background-size: 200% 200%;
     animation-name: background-flow;
     animation-duration: 60s;
-    animation-timing-function: ease;
+    animation-timing-function: cubic-bezier(0,.5,1,.5);
     animation-iteration-count: infinite;
 }
 

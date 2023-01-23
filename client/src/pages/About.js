@@ -11,7 +11,7 @@ import NodeSVG from '../assets/node.svg';
 const About = () => {
   return (
     <div className='about p-4'>
-      <div className='max-w-2xl h-full m-4 text-center bg-slate-50 bg-opacity-10 backdrop-blur-lg rounded-lg shadow-lg overflow-hidden'>
+      <div className='max-w-2xl h-full text-center bg-slate-50 bg-opacity-10 backdrop-blur-lg rounded-lg shadow-lg overflow-hidden'>
         <div className='p-4'>
           <h1 className='text-2xl mb-4'>About this Project</h1>
           <p>This Weather App is my first fully finished project designed using the following:</p>
