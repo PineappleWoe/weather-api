@@ -38,6 +38,7 @@ const Search = ({ setIsLoading, showError }) => {
   const { setWeather } = useContext(WeatherContext);
   const { setForecast } = useContext(ForecastContext);
 
+  // Handle Result Weather Data
   const fetchWeather = async (result) => {
 
     let latitude = result.target.dataset.lat;
