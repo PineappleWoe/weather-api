@@ -1,7 +1,0 @@
-.search-list{
-    display: none;
-}
-
-.search:focus-within .search-list, .search .search-btn:hover ~ div > .search-list{
-    display: block;
-}

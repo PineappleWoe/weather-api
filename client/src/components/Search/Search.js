@@ -1,11 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { Search as SearchIcon } from 'react-bootstrap-icons';
-
-// Stylesheet
-import './Search.css';
 
 // Hooks
 import useLocation from '../../hooks/useLocation';
+import useOnClickOutside from '../../hooks/useOnClickOutside';
 
 // Context
 import { WeatherContext, ForecastContext } from '../../context/WeatherContext';
@@ -13,11 +11,11 @@ import { WeatherContext, ForecastContext } from '../../context/WeatherContext';
 // Services
 import {getWeather, getForecast} from '../../api/weather';
 
-const Results = ({ results, fetchWeather }) => {
+const Results = ({ results, fetchWeather, isOpen }) => {
 
   if (results.length <= 10 && results.length > 0) {
     return (
-      <div className='absolute top-12 w-full z-10'>
+      <div className={`absolute top-12 w-full z-10${isOpen ? '' : ' hidden'}`}>
         <ul className='search-list max-h-64 p-2 bg-white rounded-md shadow-md overflow-y-auto'>
           <h3 className='text-center font-bold mb-4'>Please Select from the list below</h3>
           {results.map(result =>
@@ -34,6 +32,7 @@ const Results = ({ results, fetchWeather }) => {
 
 const Search = ({ setIsLoading, showError }) => {
   const [query, setQuery] = useState('');
+  const [isOpen, setIsOpen] = useState(false);
   const {location: results, error} = useLocation(query);
 
   const { setWeather } = useContext(WeatherContext);
@@ -55,9 +54,11 @@ const Search = ({ setIsLoading, showError }) => {
       .catch(() => showError('Unable to fetch forecast data for that location.'));
 
     setIsLoading(false);
+    setIsOpen(false);
         
   };
 
+  // GET Search Results
   const handleSubmit = () => {
     const fieldToSearch = document.querySelector('.search input').value;
 
@@ -69,10 +70,12 @@ const Search = ({ setIsLoading, showError }) => {
       return showError(error);
     }
     
-    setQuery(document.querySelector('.search input').value);
+    setQuery(fieldToSearch);
+    setIsOpen(true);
 
   };
 
+  // Handle Search via Enter Key
   const handlePress = (e) => {
     if (e.key === 'Enter') {
       e.preventDefault();
@@ -80,13 +83,17 @@ const Search = ({ setIsLoading, showError }) => {
     }
   };
 
+  // Hide Results on Click Outside Search
+  const ref = useRef();
+  useOnClickOutside(ref, isOpen, setIsOpen);
+
   return (
-    <div className="search flex justify-center max-w-5xl mb-4">
+    <div ref={ref} className="search flex justify-center max-w-5xl mb-4">
       <div className="relative w-full">
-        <input type="text" placeholder="Search by Town/City" className="w-full pl-4 pr-12 py-2 rounded-full" onKeyDown={handlePress} />
+        <input type="text" placeholder="Search by Town/City" className="w-full pl-4 pr-12 py-2 rounded-full" onKeyDown={handlePress} onClick={() => setIsOpen(true)} />
         <button type="button" className="search-btn absolute top-2/4 -translate-x-2 -translate-y-2/4 right-0 p-2 text-white bg-blue-400 rounded-full ease-in-out duration-200 active:scale-100 hover:scale-105" onClick={handleSubmit}><SearchIcon /></button>
         {results && 
-          <Results results={results} fetchWeather={fetchWeather} />
+          <Results results={results} fetchWeather={fetchWeather} isOpen={isOpen} />
         }
       </div>
     </div>
