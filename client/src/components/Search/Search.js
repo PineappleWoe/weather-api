@@ -44,6 +44,7 @@ const Search = ({ setIsLoading, showError }) => {
     let latitude = result.target.dataset.lat;
     let longitude = result.target.dataset.lon;
 
+    setIsOpen(false);
     setIsLoading(true);
 
     await getWeather(latitude, longitude)
@@ -55,7 +56,6 @@ const Search = ({ setIsLoading, showError }) => {
       .catch(() => showError('Unable to fetch forecast data for that location.'));
 
     setIsLoading(false);
-    setIsOpen(false);
         
   };
 
