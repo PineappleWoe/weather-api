@@ -6,5 +6,7 @@ Started of by asking ChatGPT for some criteria to meet for Weather App, without 
 
 Currently looking for feedback on my ReactJS code, so I'm more than happy to hear any tips!
 
+[View Page](https://react-weather-app.fly.dev/)
+
 ## Preview
 ![Preview](./client/src/assets/GitHub/preview.png)
