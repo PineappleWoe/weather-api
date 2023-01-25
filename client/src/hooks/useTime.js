@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 const useTime = () => {
-  const [time, setTime] = useState(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: true }));
+  const [time, setTime] = useState(new Date().toLocaleTimeString('en-GB', { hour: 'numeric', minute: 'numeric', hour12: true }));
   const date = new Date().toLocaleDateString('en-gb', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 
 
